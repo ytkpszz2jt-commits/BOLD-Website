@@ -1,0 +1,44 @@
+/* Self-hosted BOLD site fonts (Latin subset only) — Playfair Display + Jost.
+   Downloaded once from Google Fonts, served locally so the site has no
+   third-party runtime dependency and no extra DNS/TLS round trip.
+   Only the weights/styles actually used in css/styles.css are included. */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/public/fonts/jost-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/public/fonts/jost-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/public/fonts/playfair-display-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/public/fonts/playfair-display-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/public/fonts/playfair-display-700-italic.woff2') format('woff2');
+}
