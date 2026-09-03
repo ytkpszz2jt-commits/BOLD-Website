@@ -1,0 +1,706 @@
+/* =========================================================
+   BOLD — Beauty Marketing Agency
+   Editorial beauty-campaign site. Fixed photograph background,
+   content scrolls independently above it inside one translucent
+   ivory panel. See README for architecture notes.
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --ivory: #f4ede3;
+  --ivory-rgb: 244, 237, 227;
+  --panel-bg: rgba(var(--ivory-rgb), 0.80);
+  --panel-border: rgba(255, 255, 255, 0.45);
+  --ink: #221b15;
+  --ink-soft: #4d4238;
+  --ink-faint: rgba(34, 27, 21, 0.14);
+  --taupe: #6e5e4e;
+  --white: #ffffff;
+  --btn-black: #18130f;
+  --btn-black-hover: #2b231c;
+
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Jost", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --nav-h: clamp(4.5rem, 9vh, 6rem);
+  --panel-inset: clamp(1rem, 7vw, 14rem);
+  --panel-radius: clamp(18px, 2.4vw, 30px);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  transition: top 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.bg-fixed :focus-visible,
+.site-nav :focus-visible,
+.hero :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--white);
+}
+
+/* ---------- Fixed beauty photograph background ---------- */
+/* Uses position:fixed (not background-attachment:fixed) so it stays
+   visually stationary across desktop AND mobile browsers, where
+   background-attachment:fixed is unreliable/disabled (notably iOS Safari). */
+.bg-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.bg-fixed picture,
+.bg-fixed__img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bg-fixed__img {
+  object-fit: cover;
+  object-position: 50% 28%;
+}
+
+.bg-fixed__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0) 26%,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.58) 100%);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .bg-fixed__img {
+    object-position: 50% 24%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg-fixed__img {
+    object-position: 50% 30%;
+  }
+}
+
+/* ---------- Navigation ---------- */
+.site-nav {
+  position: relative;
+  z-index: 20;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 0;
+}
+
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-nav__group {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.site-nav a {
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  padding: 0.35rem 0.1rem;
+  transition: opacity 0.2s var(--ease);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  opacity: 0.72;
+}
+
+.site-nav__toggle {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--white);
+}
+
+.site-nav__toggle-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.site-nav__toggle-icon {
+  position: relative;
+  width: 20px;
+  height: 1px;
+  background: var(--white);
+}
+
+.site-nav__toggle-icon::before,
+.site-nav__toggle-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 1px;
+  background: var(--white);
+  transition: transform 0.2s var(--ease);
+}
+
+.site-nav__toggle-icon::before {
+  top: -6px;
+}
+
+.site-nav__toggle-icon::after {
+  top: 6px;
+}
+
+.site-nav__toggle[aria-expanded="true"] .site-nav__toggle-icon {
+  background: transparent;
+}
+
+.site-nav__toggle[aria-expanded="true"] .site-nav__toggle-icon::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.site-nav__toggle[aria-expanded="true"] .site-nav__toggle-icon::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-menu {
+  margin: 0.9rem clamp(1.25rem, 4vw, 3rem) 0;
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu li + li {
+  border-top: 1px solid var(--ink-faint);
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 1rem 1.25rem;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 719px) {
+  .site-nav__group--left,
+  .site-nav__group--right {
+    display: none;
+  }
+
+  .site-nav__toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 720px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(2.5rem, 10vh, 6rem) clamp(1.25rem, 6vw, 3rem) 0;
+  text-align: center;
+}
+
+.hero__inner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__logo {
+  width: clamp(280px, 62vw, 920px);
+  height: auto;
+  color: var(--white);
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.22));
+}
+
+.hero__slogan {
+  margin-top: clamp(0.6rem, 2vw, 1.15rem);
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1rem, 2.3vw, 1.55rem);
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.28);
+}
+
+.hero__slogan em {
+  font-style: italic;
+}
+
+/* ---------- Panel wrap / translucent content panel ---------- */
+.panel-wrap {
+  position: relative;
+  z-index: 10;
+  padding: 0 var(--panel-inset);
+  margin-top: clamp(2.25rem, 7vw, 9.25rem);
+}
+
+.panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(22px) saturate(1.15);
+  -webkit-backdrop-filter: blur(22px) saturate(1.15);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--panel-radius);
+  box-shadow: 0 30px 80px -30px rgba(20, 14, 9, 0.4);
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+/* Panel starts visible by default (no-JS / progressive enhancement).
+   Only when JS has confirmed it can run the reveal do we hide it first,
+   then fade it in via .is-visible (see js/main.js). */
+.js .panel {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js .panel.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .panel {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.panel__col {
+  padding: clamp(2rem, 5vw, 3.75rem) clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.panel__col--enquiry {
+  border-top: 1px solid var(--ink-faint);
+}
+
+@media (min-width: 900px) {
+  .panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .panel__col--enquiry {
+    border-top: none;
+    border-left: 1px solid var(--ink-faint);
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  padding-bottom: 0.6rem;
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+  border-bottom: 1px solid var(--ink-faint);
+  display: inline-block;
+}
+
+/* ---------- About column ---------- */
+.about__statement {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.55rem, 3.1vw, 2.5rem);
+  line-height: 1.18;
+  color: var(--ink);
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.about__statement em {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.about__copy {
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+
+.about__copy + .about__copy {
+  margin-top: 1rem;
+}
+
+.principles {
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-top: 1px solid var(--ink-faint);
+}
+
+.principles__item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--ink-faint);
+}
+
+.principles__icon {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--ink);
+  opacity: 0.82;
+}
+
+.principles__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.principles__label {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* ---------- Enquiry form ---------- */
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+}
+
+@media (min-width: 560px) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.35rem 1.5rem;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-bottom: 0.5rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ink-faint);
+  padding: 0.4rem 0.05rem 0.55rem;
+  border-radius: 0;
+  width: 100%;
+  transition: border-color 0.2s var(--ease);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--taupe);
+  opacity: 0.75;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-bottom-color: rgba(34, 27, 21, 0.3);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--ink);
+}
+
+.field.is-touched input:invalid,
+.field.is-touched select:invalid {
+  border-bottom-color: #a33d2e;
+}
+
+.field--select select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e5e4e' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.1rem center;
+  background-size: 14px;
+  padding-right: 1.4rem;
+  cursor: pointer;
+}
+
+.field--select select:invalid {
+  color: var(--taupe);
+}
+
+.field--message textarea {
+  border: 1px solid var(--ink-faint);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  resize: vertical;
+  min-height: 7.5rem;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.field--message textarea:focus {
+  border-color: var(--ink);
+}
+
+.form-status {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  min-height: 1.2em;
+}
+
+.form-status[data-state="error"] {
+  color: #a33d2e;
+}
+
+.form-status[data-state="success"] {
+  color: #3f6b4a;
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--btn-black);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1.05rem 1.4rem;
+  border-radius: 4px;
+  transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.submit-btn:hover {
+  background: var(--btn-black-hover);
+}
+
+.submit-btn:active {
+  transform: scale(0.99);
+}
+
+.submit-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s var(--ease);
+}
+
+.submit-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(2.5rem, 6vw, 3.5rem) 1.5rem clamp(2.25rem, 5vw, 3rem);
+  color: var(--white);
+  text-align: center;
+}
+
+.site-footer p {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.site-footer__links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-footer__links a {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.2s var(--ease);
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  opacity: 0.72;
+}
+
+@media (min-width: 720px) {
+  .site-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: clamp(1.25rem, 4vw, 3rem);
+    padding-right: clamp(1.25rem, 4vw, 3rem);
+    text-align: left;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

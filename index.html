@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BOLD — Beauty Marketing Agency</title>
+  <meta name="description" content="BOLD is a beauty marketing agency. We combine data, strategy, creative and AI-powered systems to help ambitious beauty brands grow with intention." />
+  <meta name="theme-color" content="#f4ede3" />
+
+  <!-- Open Graph / social sharing.
+       og:url and the image paths below are site-relative because no
+       production domain is set yet. Once BOLD's domain is live, add
+       <meta property="og:url"> and switch the image paths to absolute
+       URLs so link previews resolve correctly on every platform. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BOLD" />
+  <meta property="og:title" content="BOLD — Beauty Marketing Agency" />
+  <meta property="og:description" content="Beauty is our passion. Growth is our strategy. BOLD partners with ambitious beauty brands to grow with intention." />
+  <meta property="og:image" content="/public/assets/bold-background.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BOLD — Beauty Marketing Agency" />
+  <meta name="twitter:description" content="Beauty is our passion. Growth is our strategy." />
+  <meta name="twitter:image" content="/public/assets/bold-background.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/public/assets/bold-logo.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/assets/apple-touch-icon.png" />
+
+  <!-- Fonts: editorial serif (headlines + italic emphasis) + refined sans (nav/labels/body).
+       Self-hosted (Latin subset) so the site has no third-party runtime
+       dependency — see css/fonts.css. -->
+  <link rel="preload" as="font" type="font/woff2" href="/public/fonts/jost-500-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/public/fonts/playfair-display-400-italic.woff2" crossorigin />
+  <link rel="stylesheet" href="/css/fonts.css" />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Fixed beauty photograph background layer. Stays visually stationary while page content scrolls over it. -->
+  <div class="bg-fixed" aria-hidden="true">
+    <picture>
+      <source srcset="/public/assets/bold-background.avif" type="image/avif" />
+      <source srcset="/public/assets/bold-background.webp" type="image/webp" />
+      <img
+        src="/public/assets/bold-background.jpg"
+        alt=""
+        class="bg-fixed__img"
+        fetchpriority="high"
+      />
+    </picture>
+    <div class="bg-fixed__scrim"></div>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <nav class="site-nav__inner" aria-label="Primary">
+      <ul class="site-nav__group site-nav__group--left">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#enquiry">Enquiry</a></li>
+      </ul>
+
+      <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="site-nav__toggle-label">Menu</span>
+        <span class="site-nav__toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <ul class="site-nav__group site-nav__group--right">
+        <li><a id="nav-instagram" href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a id="nav-email" href="#">Email</a></li>
+      </ul>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#enquiry">Enquiry</a></li>
+        <li><a id="nav-instagram-mobile" href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a id="nav-email-mobile" href="#">Email</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" aria-label="BOLD — Beauty is our passion. Growth is our strategy.">
+      <div class="hero__inner">
+        <svg class="hero__logo" viewBox="0 0 2172 724" role="img" aria-label="BOLD">
+          <title>BOLD</title>
+          <path d="M 97 116 L 97 119 L 96 120 L 96 564 L 97 565 L 423 565 L 424 564 L 433 564 L 434 563 L 440 563 L 441 562 L 447 562 L 448 561 L 452 561 L 453 560 L 457 560 L 458 559 L 461 559 L 462 558 L 465 558 L 466 557 L 468 557 L 469 556 L 472 556 L 473 555 L 475 555 L 476 554 L 478 554 L 479 553 L 481 553 L 482 552 L 484 552 L 489 549 L 491 549 L 494 547 L 496 547 L 497 546 L 498 546 L 499 545 L 500 545 L 501 544 L 502 544 L 503 543 L 504 543 L 505 542 L 508 541 L 510 539 L 511 539 L 512 538 L 515 537 L 517 535 L 518 535 L 520 533 L 521 533 L 523 531 L 524 531 L 527 528 L 528 528 L 531 525 L 532 525 L 537 520 L 538 520 L 550 508 L 550 507 L 555 502 L 555 501 L 561 494 L 562 491 L 566 486 L 566 485 L 567 484 L 567 483 L 568 482 L 568 481 L 569 480 L 569 479 L 572 474 L 572 472 L 574 469 L 574 467 L 575 466 L 575 464 L 576 463 L 576 461 L 577 460 L 577 458 L 578 457 L 578 454 L 579 453 L 579 450 L 580 449 L 580 444 L 581 443 L 581 435 L 582 434 L 582 413 L 581 412 L 581 405 L 580 404 L 580 400 L 579 399 L 579 395 L 578 394 L 578 391 L 577 390 L 577 388 L 576 387 L 576 385 L 575 384 L 575 382 L 573 379 L 573 377 L 572 376 L 572 375 L 571 374 L 570 371 L 566 366 L 565 363 L 559 356 L 559 355 L 549 345 L 548 345 L 543 340 L 542 340 L 537 336 L 534 335 L 532 333 L 531 333 L 530 332 L 529 332 L 528 331 L 527 331 L 526 330 L 525 330 L 520 327 L 518 327 L 517 326 L 516 326 L 515 325 L 513 325 L 510 323 L 507 323 L 504 321 L 505 320 L 506 320 L 507 319 L 510 318 L 512 316 L 515 315 L 517 313 L 520 312 L 522 310 L 523 310 L 527 306 L 528 306 L 541 293 L 541 292 L 544 289 L 544 288 L 547 285 L 547 284 L 549 282 L 549 281 L 550 280 L 550 279 L 551 278 L 551 277 L 552 276 L 552 275 L 555 270 L 555 268 L 557 265 L 557 262 L 558 261 L 558 259 L 559 258 L 559 255 L 560 254 L 560 250 L 561 249 L 561 241 L 562 240 L 562 223 L 561 222 L 561 215 L 560 214 L 560 210 L 559 209 L 559 205 L 558 204 L 558 202 L 557 201 L 557 198 L 556 197 L 556 195 L 555 194 L 555 193 L 554 192 L 554 191 L 553 190 L 553 189 L 552 188 L 552 187 L 551 186 L 551 185 L 550 184 L 550 183 L 549 182 L 548 179 L 546 177 L 545 174 L 542 171 L 542 170 L 538 166 L 538 165 L 528 155 L 527 155 L 518 147 L 517 147 L 512 143 L 509 142 L 507 140 L 504 139 L 502 137 L 501 137 L 500 136 L 499 136 L 494 133 L 492 133 L 489 131 L 487 131 L 482 128 L 480 128 L 479 127 L 477 127 L 476 126 L 474 126 L 473 125 L 471 125 L 470 124 L 467 124 L 466 123 L 464 123 L 463 122 L 459 122 L 458 121 L 454 121 L 453 120 L 448 120 L 447 119 L 442 119 L 441 118 L 434 118 L 433 117 L 416 117 L 415 116 Z M 191 371 L 193 369 L 419 369 L 420 370 L 428 370 L 429 371 L 433 371 L 434 372 L 436 372 L 437 373 L 440 373 L 441 374 L 443 374 L 444 375 L 445 375 L 446 376 L 448 376 L 450 378 L 453 379 L 455 381 L 456 381 L 459 384 L 460 384 L 467 391 L 467 392 L 470 395 L 470 396 L 471 397 L 471 398 L 472 399 L 472 400 L 475 405 L 475 407 L 476 408 L 476 411 L 477 412 L 477 418 L 478 419 L 478 430 L 477 431 L 477 436 L 476 437 L 476 440 L 475 441 L 475 443 L 474 444 L 474 446 L 473 447 L 473 448 L 472 449 L 471 452 L 469 454 L 469 455 L 467 457 L 467 458 L 463 462 L 463 463 L 461 465 L 460 465 L 455 470 L 454 470 L 449 474 L 448 474 L 443 477 L 441 477 L 440 478 L 438 478 L 437 479 L 435 479 L 434 480 L 432 480 L 431 481 L 428 481 L 427 482 L 420 482 L 419 483 L 193 483 L 191 481 Z M 191 201 L 192 200 L 418 200 L 419 201 L 424 201 L 425 202 L 428 202 L 429 203 L 431 203 L 432 204 L 434 204 L 435 205 L 438 206 L 440 208 L 441 208 L 443 210 L 444 210 L 453 219 L 453 220 L 455 222 L 455 223 L 458 228 L 458 230 L 459 231 L 459 235 L 460 236 L 460 253 L 459 254 L 459 257 L 458 258 L 458 261 L 456 264 L 456 266 L 454 268 L 454 269 L 452 271 L 452 272 L 449 275 L 449 276 L 445 280 L 444 280 L 441 283 L 440 283 L 439 284 L 438 284 L 437 285 L 436 285 L 431 288 L 429 288 L 428 289 L 426 289 L 425 290 L 421 290 L 420 291 L 218 291 L 217 292 L 209 292 L 208 291 L 192 291 L 191 290 Z M 1577 114 L 1577 564 L 1578 565 L 1848 565 L 1849 564 L 1859 564 L 1860 563 L 1868 563 L 1869 562 L 1875 562 L 1876 561 L 1881 561 L 1882 560 L 1886 560 L 1887 559 L 1891 559 L 1892 558 L 1895 558 L 1896 557 L 1900 557 L 1901 556 L 1903 556 L 1904 555 L 1907 555 L 1908 554 L 1910 554 L 1911 553 L 1914 553 L 1915 552 L 1917 552 L 1918 551 L 1920 551 L 1921 550 L 1923 550 L 1924 549 L 1926 549 L 1929 547 L 1931 547 L 1932 546 L 1934 546 L 1935 545 L 1936 545 L 1937 544 L 1939 544 L 1944 541 L 1946 541 L 1947 540 L 1948 540 L 1949 539 L 1950 539 L 1951 538 L 1952 538 L 1953 537 L 1954 537 L 1955 536 L 1956 536 L 1957 535 L 1960 534 L 1962 532 L 1965 531 L 1967 529 L 1968 529 L 1969 528 L 1972 527 L 1974 525 L 1975 525 L 1977 523 L 1978 523 L 1980 521 L 1981 521 L 1984 518 L 1985 518 L 1987 516 L 1988 516 L 1992 512 L 1993 512 L 1998 507 L 1999 507 L 2023 483 L 2023 482 L 2027 478 L 2027 477 L 2031 473 L 2031 472 L 2037 465 L 2037 464 L 2041 459 L 2042 456 L 2044 454 L 2045 451 L 2047 449 L 2047 448 L 2048 447 L 2048 446 L 2049 445 L 2049 444 L 2050 443 L 2050 442 L 2051 441 L 2051 440 L 2052 439 L 2052 438 L 2053 437 L 2053 436 L 2056 431 L 2056 429 L 2058 426 L 2058 424 L 2060 421 L 2060 419 L 2062 416 L 2062 414 L 2063 413 L 2063 411 L 2064 410 L 2064 408 L 2065 407 L 2065 404 L 2066 403 L 2066 401 L 2067 400 L 2067 398 L 2068 397 L 2068 393 L 2069 392 L 2069 388 L 2070 387 L 2070 384 L 2071 383 L 2071 379 L 2072 378 L 2072 372 L 2073 371 L 2073 363 L 2074 362 L 2074 322 L 2073 321 L 2073 312 L 2072 311 L 2072 306 L 2071 305 L 2071 300 L 2070 299 L 2070 296 L 2069 295 L 2069 291 L 2068 290 L 2068 287 L 2067 286 L 2067 283 L 2066 282 L 2066 279 L 2065 278 L 2065 276 L 2064 275 L 2064 272 L 2063 271 L 2063 269 L 2062 268 L 2062 266 L 2061 265 L 2061 263 L 2060 262 L 2060 260 L 2058 257 L 2058 255 L 2057 254 L 2057 252 L 2054 247 L 2054 245 L 2053 244 L 2053 243 L 2052 242 L 2052 241 L 2051 240 L 2051 239 L 2050 238 L 2050 237 L 2049 236 L 2049 235 L 2048 234 L 2047 231 L 2045 229 L 2045 228 L 2044 227 L 2043 224 L 2041 222 L 2040 219 L 2038 217 L 2038 216 L 2036 214 L 2036 213 L 2033 210 L 2033 209 L 2030 206 L 2030 205 L 2027 202 L 2027 201 L 2024 198 L 2024 197 L 2015 188 L 2015 187 L 2002 174 L 2001 174 L 1994 167 L 1993 167 L 1989 163 L 1988 163 L 1985 160 L 1984 160 L 1977 154 L 1976 154 L 1974 152 L 1971 151 L 1966 147 L 1965 147 L 1964 146 L 1961 145 L 1959 143 L 1958 143 L 1953 140 L 1951 140 L 1950 139 L 1947 138 L 1945 136 L 1943 136 L 1938 133 L 1936 133 L 1935 132 L 1934 132 L 1933 131 L 1931 131 L 1928 129 L 1926 129 L 1925 128 L 1923 128 L 1922 127 L 1920 127 L 1919 126 L 1917 126 L 1916 125 L 1913 125 L 1912 124 L 1910 124 L 1909 123 L 1907 123 L 1906 122 L 1903 122 L 1902 121 L 1899 121 L 1898 120 L 1895 120 L 1894 119 L 1890 119 L 1889 118 L 1886 118 L 1885 117 L 1880 117 L 1879 116 L 1873 116 L 1872 115 L 1865 115 L 1864 114 L 1852 114 L 1851 113 L 1578 113 Z M 1688 201 L 1689 200 L 1835 200 L 1836 201 L 1844 201 L 1845 202 L 1851 202 L 1852 203 L 1857 203 L 1858 204 L 1861 204 L 1862 205 L 1865 205 L 1866 206 L 1869 206 L 1870 207 L 1872 207 L 1873 208 L 1875 208 L 1876 209 L 1878 209 L 1879 210 L 1881 210 L 1882 211 L 1884 211 L 1885 212 L 1886 212 L 1891 215 L 1893 215 L 1894 216 L 1895 216 L 1896 217 L 1899 218 L 1901 220 L 1904 221 L 1909 225 L 1912 226 L 1915 229 L 1916 229 L 1920 233 L 1921 233 L 1938 250 L 1938 251 L 1942 255 L 1942 256 L 1945 259 L 1945 260 L 1947 262 L 1947 263 L 1951 268 L 1952 271 L 1954 273 L 1954 274 L 1955 275 L 1955 276 L 1958 281 L 1958 283 L 1960 286 L 1960 288 L 1961 289 L 1961 291 L 1962 292 L 1962 294 L 1963 295 L 1963 297 L 1964 298 L 1964 300 L 1965 301 L 1965 304 L 1966 305 L 1966 308 L 1967 309 L 1967 314 L 1968 315 L 1968 320 L 1969 321 L 1969 329 L 1970 330 L 1970 352 L 1969 353 L 1969 362 L 1968 363 L 1968 368 L 1967 369 L 1967 372 L 1966 373 L 1966 377 L 1965 378 L 1965 380 L 1964 381 L 1964 384 L 1963 385 L 1963 387 L 1962 388 L 1962 390 L 1961 391 L 1961 393 L 1958 398 L 1958 400 L 1957 401 L 1957 402 L 1956 403 L 1956 404 L 1955 405 L 1955 406 L 1954 407 L 1954 408 L 1953 409 L 1952 412 L 1950 414 L 1949 417 L 1947 419 L 1947 420 L 1945 422 L 1945 423 L 1941 427 L 1941 428 L 1937 432 L 1937 433 L 1923 447 L 1922 447 L 1918 451 L 1917 451 L 1914 454 L 1913 454 L 1910 457 L 1909 457 L 1907 459 L 1906 459 L 1901 463 L 1900 463 L 1899 464 L 1898 464 L 1897 465 L 1894 466 L 1892 468 L 1891 468 L 1888 470 L 1886 470 L 1885 471 L 1884 471 L 1879 474 L 1877 474 L 1874 476 L 1872 476 L 1871 477 L 1869 477 L 1868 478 L 1865 478 L 1864 479 L 1862 479 L 1861 480 L 1859 480 L 1858 481 L 1855 481 L 1854 482 L 1850 482 L 1849 483 L 1844 483 L 1843 484 L 1837 484 L 1836 485 L 1827 485 L 1826 486 L 1689 486 L 1688 485 Z M 1184 113 L 1183 114 L 1183 565 L 1552 565 L 1553 564 L 1553 484 L 1549 484 L 1548 483 L 1407 483 L 1406 484 L 1405 484 L 1404 483 L 1393 483 L 1392 484 L 1368 484 L 1367 483 L 1356 483 L 1355 484 L 1339 484 L 1338 483 L 1326 483 L 1325 484 L 1303 484 L 1302 483 L 1297 483 L 1296 482 L 1296 113 Z M 811 113 L 810 114 L 807 114 L 806 115 L 803 115 L 802 116 L 799 116 L 798 117 L 796 117 L 795 118 L 792 118 L 791 119 L 789 119 L 788 120 L 785 120 L 784 121 L 782 121 L 781 122 L 779 122 L 778 123 L 776 123 L 775 124 L 773 124 L 772 125 L 770 125 L 769 126 L 768 126 L 767 127 L 765 127 L 762 129 L 760 129 L 759 130 L 758 130 L 753 133 L 751 133 L 750 134 L 749 134 L 748 135 L 747 135 L 746 136 L 745 136 L 744 137 L 743 137 L 742 138 L 741 138 L 740 139 L 739 139 L 738 140 L 737 140 L 736 141 L 735 141 L 734 142 L 733 142 L 732 143 L 729 144 L 727 146 L 726 146 L 725 147 L 724 147 L 722 149 L 719 150 L 717 152 L 716 152 L 714 154 L 713 154 L 711 156 L 710 156 L 708 158 L 707 158 L 705 160 L 704 160 L 702 162 L 701 162 L 699 164 L 698 164 L 695 167 L 694 167 L 688 173 L 687 173 L 683 177 L 682 177 L 659 200 L 659 201 L 653 207 L 653 208 L 648 213 L 648 214 L 646 216 L 646 217 L 643 220 L 643 221 L 641 223 L 641 224 L 639 226 L 639 227 L 637 229 L 637 230 L 633 235 L 632 238 L 630 240 L 630 241 L 629 242 L 628 245 L 626 247 L 626 248 L 625 249 L 625 250 L 624 251 L 624 252 L 623 253 L 623 254 L 622 255 L 622 256 L 619 261 L 619 263 L 616 268 L 616 270 L 615 271 L 615 272 L 614 273 L 614 275 L 612 278 L 612 280 L 611 281 L 611 283 L 610 284 L 610 286 L 609 287 L 609 289 L 608 290 L 608 293 L 607 294 L 607 296 L 606 297 L 606 299 L 605 300 L 605 303 L 604 304 L 604 308 L 603 309 L 603 313 L 602 314 L 602 319 L 601 320 L 601 326 L 600 327 L 600 336 L 599 337 L 599 367 L 600 368 L 600 377 L 601 378 L 601 384 L 602 385 L 602 389 L 603 390 L 603 394 L 604 395 L 604 398 L 605 399 L 605 401 L 606 402 L 606 405 L 607 406 L 607 408 L 608 409 L 608 411 L 609 412 L 609 414 L 610 415 L 610 417 L 611 418 L 611 420 L 613 423 L 613 425 L 614 426 L 614 427 L 615 428 L 615 429 L 618 434 L 618 436 L 619 437 L 620 440 L 622 442 L 622 443 L 623 444 L 624 447 L 626 449 L 626 450 L 627 451 L 627 452 L 629 454 L 629 455 L 630 456 L 631 459 L 633 461 L 633 462 L 636 465 L 636 466 L 640 470 L 640 471 L 643 474 L 643 475 L 650 482 L 650 483 L 672 505 L 673 505 L 680 512 L 681 512 L 684 515 L 685 515 L 688 518 L 689 518 L 696 524 L 697 524 L 699 526 L 700 526 L 702 528 L 703 528 L 705 530 L 706 530 L 711 534 L 712 534 L 713 535 L 714 535 L 715 536 L 718 537 L 720 539 L 723 540 L 725 542 L 726 542 L 727 543 L 728 543 L 729 544 L 730 544 L 735 547 L 737 547 L 738 548 L 739 548 L 740 549 L 741 549 L 746 552 L 748 552 L 753 555 L 755 555 L 756 556 L 757 556 L 758 557 L 760 557 L 763 559 L 765 559 L 766 560 L 768 560 L 769 561 L 771 561 L 772 562 L 774 562 L 775 563 L 777 563 L 778 564 L 780 564 L 781 565 L 783 565 L 784 566 L 787 566 L 788 567 L 790 567 L 791 568 L 794 568 L 795 569 L 798 569 L 799 570 L 802 570 L 803 571 L 807 571 L 808 572 L 812 572 L 813 573 L 818 573 L 819 574 L 823 574 L 824 575 L 831 575 L 832 576 L 839 576 L 840 577 L 852 577 L 853 578 L 896 578 L 897 577 L 908 577 L 909 576 L 916 576 L 917 575 L 923 575 L 924 574 L 929 574 L 930 573 L 934 573 L 935 572 L 938 572 L 939 571 L 943 571 L 944 570 L 947 570 L 948 569 L 951 569 L 952 568 L 955 568 L 956 567 L 958 567 L 959 566 L 962 566 L 963 565 L 965 565 L 966 564 L 968 564 L 969 563 L 972 563 L 973 562 L 975 562 L 976 561 L 978 561 L 981 559 L 983 559 L 984 558 L 986 558 L 987 557 L 989 557 L 990 556 L 991 556 L 992 555 L 994 555 L 997 553 L 999 553 L 1000 552 L 1001 552 L 1002 551 L 1003 551 L 1004 550 L 1005 550 L 1006 549 L 1007 549 L 1008 548 L 1009 548 L 1010 547 L 1011 547 L 1012 546 L 1013 546 L 1014 545 L 1015 545 L 1016 544 L 1017 544 L 1018 543 L 1019 543 L 1020 542 L 1021 542 L 1022 541 L 1023 541 L 1024 540 L 1025 540 L 1026 539 L 1029 538 L 1031 536 L 1034 535 L 1036 533 L 1037 533 L 1039 531 L 1042 530 L 1044 528 L 1045 528 L 1047 526 L 1048 526 L 1051 523 L 1052 523 L 1054 521 L 1055 521 L 1059 517 L 1060 517 L 1063 514 L 1064 514 L 1067 511 L 1068 511 L 1072 507 L 1073 507 L 1096 484 L 1096 483 L 1102 477 L 1102 476 L 1108 469 L 1108 468 L 1110 466 L 1110 465 L 1113 462 L 1113 461 L 1115 459 L 1115 458 L 1119 453 L 1120 450 L 1124 445 L 1124 444 L 1125 443 L 1125 442 L 1126 441 L 1126 440 L 1127 439 L 1127 438 L 1128 437 L 1129 434 L 1131 432 L 1131 430 L 1132 429 L 1132 428 L 1135 423 L 1135 421 L 1136 420 L 1136 419 L 1137 418 L 1137 416 L 1139 413 L 1139 411 L 1140 410 L 1140 408 L 1142 405 L 1142 402 L 1143 401 L 1143 399 L 1144 398 L 1144 395 L 1145 394 L 1145 392 L 1146 391 L 1146 388 L 1147 387 L 1147 382 L 1148 381 L 1148 377 L 1149 376 L 1149 371 L 1150 370 L 1150 361 L 1151 360 L 1151 322 L 1150 321 L 1150 313 L 1149 312 L 1149 307 L 1148 306 L 1148 301 L 1147 300 L 1147 296 L 1146 295 L 1146 291 L 1145 290 L 1145 288 L 1144 287 L 1144 284 L 1143 283 L 1143 280 L 1142 279 L 1142 277 L 1141 276 L 1141 274 L 1140 273 L 1140 271 L 1139 270 L 1139 268 L 1138 267 L 1138 265 L 1137 264 L 1137 262 L 1136 261 L 1136 260 L 1133 255 L 1133 253 L 1132 252 L 1132 251 L 1131 250 L 1131 249 L 1130 248 L 1130 247 L 1129 246 L 1129 245 L 1128 244 L 1128 243 L 1127 242 L 1127 241 L 1126 240 L 1125 237 L 1123 235 L 1123 234 L 1122 233 L 1121 230 L 1119 228 L 1118 225 L 1116 223 L 1116 222 L 1114 220 L 1114 219 L 1111 216 L 1111 215 L 1108 212 L 1108 211 L 1105 208 L 1105 207 L 1100 202 L 1100 201 L 1089 190 L 1089 189 L 1085 185 L 1084 185 L 1075 176 L 1074 176 L 1069 171 L 1068 171 L 1064 167 L 1063 167 L 1061 165 L 1060 165 L 1057 162 L 1056 162 L 1053 159 L 1052 159 L 1050 157 L 1047 156 L 1045 154 L 1044 154 L 1039 150 L 1038 150 L 1037 149 L 1034 148 L 1032 146 L 1031 146 L 1030 145 L 1029 145 L 1028 144 L 1027 144 L 1026 143 L 1025 143 L 1024 142 L 1023 142 L 1022 141 L 1021 141 L 1020 140 L 1019 140 L 1018 139 L 1017 139 L 1016 138 L 1015 138 L 1014 137 L 1013 137 L 1012 136 L 1011 136 L 1006 133 L 1004 133 L 1003 132 L 1002 132 L 999 130 L 997 130 L 994 128 L 992 128 L 991 127 L 989 127 L 988 126 L 986 126 L 983 124 L 981 124 L 980 123 L 978 123 L 977 122 L 975 122 L 974 121 L 972 121 L 971 120 L 968 120 L 967 119 L 965 119 L 964 118 L 961 118 L 960 117 L 957 117 L 956 116 L 954 116 L 953 115 L 949 115 L 948 114 L 945 114 L 944 113 L 940 113 L 939 112 L 934 112 L 933 111 L 928 111 L 927 110 L 921 110 L 920 109 L 912 109 L 911 108 L 901 108 L 900 107 L 854 107 L 853 108 L 843 108 L 842 109 L 835 109 L 834 110 L 828 110 L 827 111 L 822 111 L 821 112 L 816 112 L 815 113 Z M 842 197 L 848 197 L 849 196 L 856 196 L 857 195 L 872 195 L 873 194 L 875 194 L 876 195 L 896 195 L 897 196 L 905 196 L 906 197 L 912 197 L 913 198 L 917 198 L 918 199 L 922 199 L 923 200 L 927 200 L 928 201 L 930 201 L 931 202 L 933 202 L 934 203 L 936 203 L 937 204 L 939 204 L 940 205 L 942 205 L 943 206 L 945 206 L 948 208 L 950 208 L 951 209 L 953 209 L 954 210 L 955 210 L 956 211 L 957 211 L 958 212 L 959 212 L 960 213 L 961 213 L 962 214 L 963 214 L 964 215 L 965 215 L 966 216 L 969 217 L 971 219 L 972 219 L 973 220 L 976 221 L 978 223 L 979 223 L 981 225 L 982 225 L 984 227 L 985 227 L 989 231 L 990 231 L 994 235 L 995 235 L 1001 241 L 1002 241 L 1012 251 L 1012 252 L 1017 257 L 1017 258 L 1021 262 L 1021 263 L 1024 266 L 1024 267 L 1028 272 L 1029 275 L 1031 277 L 1031 278 L 1032 279 L 1032 280 L 1033 281 L 1033 282 L 1034 283 L 1034 284 L 1035 285 L 1035 286 L 1036 287 L 1036 288 L 1039 293 L 1039 295 L 1041 298 L 1041 301 L 1042 302 L 1042 304 L 1043 305 L 1043 307 L 1044 308 L 1044 310 L 1045 311 L 1045 315 L 1046 316 L 1046 321 L 1047 322 L 1047 327 L 1048 328 L 1048 339 L 1049 340 L 1049 350 L 1048 351 L 1048 360 L 1047 361 L 1047 367 L 1046 368 L 1046 372 L 1045 373 L 1045 377 L 1044 378 L 1044 381 L 1043 382 L 1043 384 L 1042 385 L 1042 387 L 1041 388 L 1041 390 L 1039 393 L 1039 395 L 1037 398 L 1037 400 L 1036 401 L 1036 402 L 1034 404 L 1034 405 L 1033 406 L 1033 407 L 1032 408 L 1032 409 L 1031 410 L 1031 411 L 1030 412 L 1029 415 L 1027 417 L 1027 418 L 1025 420 L 1025 421 L 1023 423 L 1023 424 L 1021 426 L 1021 427 L 1017 431 L 1017 432 L 1005 444 L 1005 445 L 1003 447 L 1002 447 L 995 454 L 994 454 L 991 457 L 990 457 L 983 463 L 982 463 L 980 465 L 977 466 L 972 470 L 971 470 L 970 471 L 967 472 L 965 474 L 964 474 L 959 477 L 957 477 L 956 478 L 955 478 L 950 481 L 948 481 L 945 483 L 943 483 L 942 484 L 940 484 L 939 485 L 937 485 L 936 486 L 934 486 L 933 487 L 931 487 L 930 488 L 928 488 L 927 489 L 923 489 L 922 490 L 919 490 L 918 491 L 915 491 L 914 492 L 909 492 L 908 493 L 903 493 L 902 494 L 893 494 L 892 495 L 855 495 L 854 494 L 846 494 L 845 493 L 839 493 L 838 492 L 834 492 L 833 491 L 829 491 L 828 490 L 824 490 L 823 489 L 821 489 L 820 488 L 817 488 L 816 487 L 814 487 L 813 486 L 810 486 L 807 484 L 805 484 L 804 483 L 802 483 L 801 482 L 800 482 L 799 481 L 797 481 L 792 478 L 790 478 L 789 477 L 788 477 L 787 476 L 786 476 L 785 475 L 784 475 L 783 474 L 782 474 L 781 473 L 780 473 L 779 472 L 776 471 L 774 469 L 773 469 L 768 465 L 767 465 L 766 464 L 765 464 L 763 462 L 762 462 L 759 459 L 758 459 L 753 454 L 752 454 L 747 449 L 746 449 L 738 441 L 738 440 L 730 432 L 730 431 L 727 428 L 727 427 L 725 425 L 725 424 L 721 419 L 721 418 L 720 417 L 719 414 L 717 412 L 717 411 L 716 410 L 716 409 L 715 408 L 715 407 L 714 406 L 714 405 L 713 404 L 713 403 L 710 398 L 710 396 L 708 393 L 708 390 L 707 389 L 707 387 L 706 386 L 706 383 L 705 382 L 705 379 L 704 378 L 704 374 L 703 373 L 703 369 L 702 368 L 702 361 L 701 360 L 701 338 L 702 337 L 702 329 L 703 328 L 703 323 L 704 322 L 704 319 L 705 318 L 705 315 L 706 314 L 706 311 L 707 310 L 707 308 L 708 307 L 708 305 L 709 304 L 709 302 L 710 301 L 710 299 L 712 296 L 712 294 L 713 293 L 713 292 L 714 291 L 715 288 L 717 286 L 717 285 L 718 284 L 718 283 L 719 282 L 720 279 L 722 277 L 723 274 L 725 272 L 725 271 L 727 269 L 727 268 L 730 265 L 730 264 L 733 261 L 733 260 L 743 250 L 743 249 L 746 247 L 746 246 L 750 242 L 751 242 L 757 236 L 758 236 L 767 228 L 768 228 L 770 226 L 773 225 L 775 223 L 776 223 L 781 219 L 782 219 L 783 218 L 784 218 L 785 217 L 786 217 L 787 216 L 788 216 L 789 215 L 790 215 L 791 214 L 792 214 L 793 213 L 794 213 L 795 212 L 796 212 L 801 209 L 803 209 L 804 208 L 806 208 L 809 206 L 811 206 L 812 205 L 814 205 L 815 204 L 817 204 L 818 203 L 820 203 L 821 202 L 824 202 L 825 201 L 827 201 L 828 200 L 831 200 L 832 199 L 836 199 L 837 198 L 841 198 Z" fill="currentColor" fill-rule="evenodd"/>
+        </svg>
+        <p class="hero__slogan">Beauty is our passion. <em>Growth is our strategy.</em></p>
+      </div>
+    </section>
+
+    <div class="panel-wrap">
+      <div class="panel">
+
+        <section class="panel__col panel__col--about" id="about" aria-labelledby="about-heading">
+          <p class="eyebrow">About Us</p>
+
+          <h2 id="about-heading" class="about__statement">
+            We don&rsquo;t just market beauty brands.<br />
+            We build <em>iconic</em> businesses.
+          </h2>
+
+          <p class="about__copy">
+            At BOLD, we combine data, strategy, creative and AI-powered systems to turn attention into appointments, followers into loyal clients, and content into consistent revenue.
+          </p>
+          <p class="about__copy">
+            We partner with ambitious beauty brands to grow with intention &mdash; through strategy that&rsquo;s smart, systems that scale, and content that converts.
+          </p>
+
+          <ul class="principles">
+            <li class="principles__item">
+              <span class="principles__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <circle cx="12" cy="12" r="4.5" />
+                  <circle cx="12" cy="12" r="0.75" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+              <span class="principles__label">Strategy that drives growth</span>
+            </li>
+            <li class="principles__item">
+              <span class="principles__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3.5 L13.6 9.6 L19.5 11.2 L13.6 12.8 L12 19 L10.4 12.8 L4.5 11.2 L10.4 9.6 Z" />
+                  <path d="M19 3.5 L19.6 5.6 L21.6 6.2 L19.6 6.8 L19 9 L18.4 6.8 L16.4 6.2 L18.4 5.6 Z" />
+                </svg>
+              </span>
+              <span class="principles__label">Content that converts</span>
+            </li>
+            <li class="principles__item">
+              <span class="principles__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="8.5" cy="8" r="3" />
+                  <circle cx="16" cy="9" r="2.4" />
+                  <path d="M3.5 19c0-3 2.2-5.2 5-5.2s5 2.2 5 5.2" />
+                  <path d="M14.2 14.3c2.2.3 3.8 2.2 3.8 4.7" />
+                </svg>
+              </span>
+              <span class="principles__label">Systems that scale</span>
+            </li>
+            <li class="principles__item">
+              <span class="principles__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3.5 19.5h17" />
+                  <path d="M3.5 19.5 9 12.5 13 15.5 20.5 6" />
+                  <path d="M15.5 6h5v5" />
+                </svg>
+              </span>
+              <span class="principles__label">Results that matter</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel__col panel__col--enquiry" id="enquiry" aria-labelledby="enquiry-heading">
+          <p class="eyebrow">Enquiry Form</p>
+          <h2 id="enquiry-heading" class="sr-only">Enquiry Form</h2>
+
+          <form id="enquiry-form" class="enquiry-form" novalidate>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-name">Your Name</label>
+                <input type="text" id="f-name" name="name" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="f-business">Business Name</label>
+                <input type="text" id="f-business" name="business" autocomplete="organization" required />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-instagram">Instagram @</label>
+                <input type="text" id="f-instagram" name="instagram" placeholder="@yourbrand" />
+              </div>
+              <div class="field">
+                <label for="f-email">Email Address</label>
+                <input type="email" id="f-email" name="email" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-phone">Phone Number</label>
+                <input type="tel" id="f-phone" name="phone" autocomplete="tel" />
+              </div>
+              <div class="field field--select">
+                <label for="f-business-type">Business Type</label>
+                <select id="f-business-type" name="businessType" required>
+                  <option value="" disabled selected hidden></option>
+                  <option>Medical Aesthetics / Med Spa</option>
+                  <option>Skincare Clinic</option>
+                  <option>Injectables &amp; Cosmetic Injecting</option>
+                  <option>Laser &amp; Aesthetic Treatments</option>
+                  <option>Hair &amp; Beauty Salon</option>
+                  <option>Cosmetic Surgery Clinic</option>
+                  <option>Beauty Product Brand</option>
+                  <option>Wellness &amp; Spa</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field field--select">
+                <label for="f-revenue">Current Monthly Revenue</label>
+                <select id="f-revenue" name="revenue">
+                  <option value="" disabled selected hidden></option>
+                  <option>Under $10k</option>
+                  <option>$10k &ndash; $25k</option>
+                  <option>$25k &ndash; $50k</option>
+                  <option>$50k &ndash; $100k</option>
+                  <option>$100k &ndash; $250k</option>
+                  <option>$250k+</option>
+                </select>
+              </div>
+              <div class="field field--select">
+                <label for="f-help">What do you need help with?</label>
+                <select id="f-help" name="helpWith">
+                  <option value="" disabled selected hidden></option>
+                  <option>Social Media &amp; Content</option>
+                  <option>Paid Advertising</option>
+                  <option>Branding &amp; Creative</option>
+                  <option>Website &amp; Booking Systems</option>
+                  <option>Lead Generation &amp; Sales Systems</option>
+                  <option>Full Growth Partnership</option>
+                  <option>Not Sure Yet</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field field--select">
+                <label for="f-budget">Monthly Marketing Budget</label>
+                <select id="f-budget" name="budget">
+                  <option value="" disabled selected hidden></option>
+                  <option>Under $1k</option>
+                  <option>$1k &ndash; $3k</option>
+                  <option>$3k &ndash; $5k</option>
+                  <option>$5k &ndash; $10k</option>
+                  <option>$10k+</option>
+                </select>
+              </div>
+              <div class="field"></div>
+            </div>
+
+            <div class="field field--message">
+              <label for="f-message" class="sr-only">Tell us about your business</label>
+              <textarea id="f-message" name="message" rows="4" placeholder="Tell us about your business, your goals and what you need help with&hellip;"></textarea>
+            </div>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+            <button type="submit" class="submit-btn">
+              <span>Submit Enquiry</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h16" />
+                <path d="M14 6l6 6-6 6" />
+              </svg>
+            </button>
+          </form>
+        </section>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> BOLD Beauty Marketing</p>
+      <ul class="site-footer__links">
+        <li><a id="footer-instagram" href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a id="footer-email" href="#">Email</a></li>
+      </ul>
+    </footer>
+
+  </main>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
