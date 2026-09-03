@@ -41,16 +41,22 @@ html {
   text-size-adjust: 100%;
 }
 
+/* No overflow rule on html/body: setting `overflow` here (even just
+   overflow-x) turns body into iOS Safari's scrolling container, which
+   makes it compute position:fixed descendants relative to the document
+   instead of the real viewport — breaking the fixed background below.
+   The layout itself doesn't overflow horizontally, so this isn't needed. */
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--ivory);
+  /* Transparent: cream/ivory belongs only to the foreground panel/cards.
+     The fixed photograph (.bg-fixed) is the page's only true background. */
+  background: transparent;
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 img {
@@ -422,18 +428,27 @@ h1, h2, h3, p {
 }
 
 /* ---------- About column ---------- */
+/* Editorial "italic pivot" system: Roman setup -> bold italic emphasis ->
+   Roman setup -> bold italic resolution. The contrast between the two
+   treatments carries the emphasis, not a uniform italic statement. */
 .about__statement {
   font-family: var(--font-serif);
-  font-weight: 500;
   font-size: clamp(1.55rem, 3.1vw, 2.5rem);
-  line-height: 1.18;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  text-align: left;
   color: var(--ink);
   margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
-.about__statement em {
+.about__statement .roman {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.about__statement .bold-italic {
+  font-weight: 700;
   font-style: italic;
-  font-weight: 500;
 }
 
 .about__copy {
