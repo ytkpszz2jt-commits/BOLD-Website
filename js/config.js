@@ -16,17 +16,18 @@ export const SITE_CONFIG = {
   /**
    * Enquiry form submission endpoint.
    *
-   * No production backend is configured yet. Leave this as null until
-   * BOLD's Lead Engine / AI Inbox / CRM exposes an endpoint to receive
-   * enquiries. When ready, set it to that endpoint's URL — the form in
-   * js/main.js already POSTs a JSON payload shaped like:
+   * Points at the "Website enquiry intake" Airtable automation's webhook
+   * (base "BOLD Website Enquiries" → table "Leads"). The form in js/main.js
+   * POSTs a JSON payload shaped like:
    *
    *   {
    *     name, business, instagram, email, phone,
-   *     businessType, revenue, helpWith, budget, message
+   *     businessType, revenue, helpWith, budget, message, submittedAt
    *   }
    *
-   * and requires zero markup/UI changes to start working.
+   * and requires zero markup/UI changes to work once the automation is
+   * deployed on the Airtable side.
    */
-  enquiryEndpoint: null,
+  enquiryEndpoint:
+    "https://hooks.airtable.com/workflows/v1/genericWebhook/appzG0hj27hu4djpk/wflXwYR9fM46nQnJx/wtrfgYT8eaXG9H09q",
 };

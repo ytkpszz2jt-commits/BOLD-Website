@@ -129,21 +129,15 @@ function setStatus(message, state) {
 
 function collectPayload(formEl) {
   const data = new FormData(formEl);
-  return Object.fromEntries(data.entries());
+  const payload = Object.fromEntries(data.entries());
+  payload.submittedAt = new Date().toISOString();
+  return payload;
 }
 
 /**
- * Submits the enquiry.
- *
- * There is no production backend configured for this site yet (see
- * js/config.js). Rather than pretending the enquiry was received, this
- * function is honest about that: if SITE_CONFIG.enquiryEndpoint is unset
- * it tells the visitor how to reach BOLD directly instead of silently
+ * Submits the enquiry to SITE_CONFIG.enquiryEndpoint. If that's unset,
+ * tells the visitor how to reach BOLD directly instead of silently
  * discarding their message or falsely claiming success.
- *
- * Once BOLD's Lead Engine / AI Inbox / CRM exposes a submission endpoint,
- * set SITE_CONFIG.enquiryEndpoint and this function will POST the form's
- * JSON payload there — no UI changes required.
  */
 async function submitEnquiry(payload) {
   if (!SITE_CONFIG.enquiryEndpoint) {
