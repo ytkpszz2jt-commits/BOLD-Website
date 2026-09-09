@@ -138,6 +138,15 @@ function collectPayload(formEl) {
  * Submits the enquiry to SITE_CONFIG.enquiryEndpoint. If that's unset,
  * tells the visitor how to reach BOLD directly instead of silently
  * discarding their message or falsely claiming success.
+ *
+ * The endpoint (an Airtable automation webhook) returns no CORS headers,
+ * so a JSON POST — which requires a CORS preflight — would be blocked by
+ * the browser before it ever reached Airtable. Sending the body as
+ * URL-encoded form data keeps this a CORS "simple request" (no
+ * preflight), which Airtable accepts. The trade-off, forced by that same
+ * missing-CORS-headers behavior, is that the response is opaque
+ * (mode: "no-cors") — the browser can't read a status code back, so
+ * success here means the request was sent, not a confirmed 200.
  */
 async function submitEnquiry(payload) {
   if (!SITE_CONFIG.enquiryEndpoint) {
@@ -146,13 +155,13 @@ async function submitEnquiry(payload) {
     throw err;
   }
 
-  const response = await fetch(SITE_CONFIG.enquiryEndpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
+  try {
+    await fetch(SITE_CONFIG.enquiryEndpoint, {
+      method: "POST",
+      mode: "no-cors",
+      body: new URLSearchParams(payload),
+    });
+  } catch (error) {
     const err = new Error("request-failed");
     err.code = "request-failed";
     throw err;

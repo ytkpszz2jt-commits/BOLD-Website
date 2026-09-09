@@ -18,12 +18,11 @@ export const SITE_CONFIG = {
    *
    * Points at the "Website enquiry intake" Airtable automation's webhook
    * (base "BOLD Website Enquiries" → table "Leads"). The form in js/main.js
-   * POSTs a JSON payload shaped like:
+   * POSTs a URL-encoded body (Airtable's endpoint sends no CORS headers,
+   * so JSON + preflight would be blocked by the browser) carrying:
    *
-   *   {
-   *     name, business, instagram, email, phone,
-   *     businessType, revenue, helpWith, budget, message, submittedAt
-   *   }
+   *   name, business, instagram, email, phone,
+   *   businessType, revenue, helpWith, budget, message, submittedAt
    *
    * and requires zero markup/UI changes to work once the automation is
    * deployed on the Airtable side.
