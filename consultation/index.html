@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BOLD Consultation</title>
+  <meta name="description" content="Request a consultation with BOLD, the aesthetic marketing agency for plastic surgeons and medspas." />
+  <meta name="theme-color" content="#f4ede3" />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://boldbma.com/consultation/" />
+
+  <link rel="icon" type="image/svg+xml" href="/public/assets/bold-logo.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/assets/apple-touch-icon.png" />
+
+  <link rel="preload" as="font" type="font/woff2" href="/public/fonts/jost-500-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/public/fonts/playfair-display-400-italic.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/public/fonts/playfair-display-400-normal.woff2" crossorigin />
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/consultation.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="consult-body">
+
+  <div class="bg-fixed" aria-hidden="true">
+    <picture>
+      <source srcset="/public/assets/bold-background.avif" type="image/avif" />
+      <source srcset="/public/assets/bold-background.webp" type="image/webp" />
+      <img src="/public/assets/bold-background.jpg" alt="" class="bg-fixed__img" fetchpriority="high" />
+    </picture>
+    <div class="bg-fixed__scrim"></div>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav consult-nav">
+    <nav class="site-nav__inner" aria-label="Primary">
+      <ul class="site-nav__group site-nav__group--left">
+        <li><a href="/">BOLD</a></li>
+      </ul>
+      <ul class="site-nav__group site-nav__group--right">
+        <li><span class="consult-nav__eyebrow">Private Consultation</span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="consult-main">
+    <div class="panel-wrap consult-panel-wrap">
+      <div class="panel consult-panel" id="consult-panel">
+
+        <!-- Intro -->
+        <div class="consult-col consult-intro">
+          <svg class="consult-logo" viewBox="0 0 2172 724" role="img" aria-label="BOLD">
+            <title>BOLD</title>
+            <use href="#bold-wordmark-path"></use>
+          </svg>
+          <p class="eyebrow">Aesthetic Marketing Agency</p>
+          <h1 class="consult-intro__title">A private consultation, <em>built around your practice.</em></h1>
+          <p class="consult-intro__copy">
+            Thank you for your interest in working with BOLD. We would love to
+            learn more about your practice, your current marketing and where
+            you want to grow. Your answers will help us understand your goals
+            and prepare for a more focused and valuable consultation.
+          </p>
+          <p class="consult-intro__meta">Strategy &middot; Content &middot; Growth<br />For Plastic Surgeons &amp; Medspas</p>
+        </div>
+
+        <!-- Form column -->
+        <div class="consult-col consult-form-col">
+
+          <div class="progress" aria-hidden="true">
+            <div class="progress__track"><div class="progress__fill" id="progress-fill"></div></div>
+            <p class="progress__label" id="progress-label">Step 1 of 13</p>
+          </div>
+
+          <form id="consult-form" class="consult-form" novalidate>
+            <input type="hidden" name="leadSource" value="BOLD Outreach Consultation" />
+            <input type="hidden" name="submissionId" id="submission-id" />
+
+            <div class="steps" id="steps"></div>
+
+            <div class="step-nav">
+              <button type="button" class="step-btn step-btn--back" id="btn-back">Back</button>
+              <button type="button" class="step-btn step-btn--next" id="btn-next">Continue</button>
+              <button type="submit" class="submit-btn step-btn--submit" id="btn-submit" hidden>
+                <span>Request Consultation</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="consult-success" id="consult-success" hidden>
+            <p class="eyebrow">Consultation Received</p>
+            <h2 class="consult-success__title">Thank you.</h2>
+            <p>Your consultation request has been received.</p>
+            <p>Our team will review your information carefully and be in touch with the next steps.</p>
+            <p class="consult-success__sign">BOLD<br /><span>Aesthetic Marketing Agency</span></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <path id="bold-wordmark-path" d="M 97 116 L 97 119 L 96 120 L 96 564 L 97 565 L 423 565 L 424 564 L 433 564 L 434 563 L 440 563 L 441 562 L 447 562 L 448 561 L 452 561 L 453 560 L 457 560 L 458 559 L 461 559 L 462 558 L 465 558 L 466 557 L 468 557 L 469 556 L 472 556 L 473 555 L 475 555 L 476 554 L 478 554 L 479 553 L 481 553 L 482 552 L 484 552 L 489 549 L 491 549 L 494 547 L 496 547 L 497 546 L 498 546 L 499 545 L 500 545 L 501 544 L 502 544 L 503 543 L 504 543 L 505 542 L 508 541 L 510 539 L 511 539 L 512 538 L 515 537 L 517 535 L 518 535 L 520 533 L 521 533 L 523 531 L 524 531 L 527 528 L 528 528 L 531 525 L 532 525 L 537 520 L 538 520 L 550 508 L 550 507 L 555 502 L 555 501 L 561 494 L 562 491 L 566 486 L 566 485 L 567 484 L 567 483 L 568 482 L 568 481 L 569 480 L 569 479 L 572 474 L 572 472 L 574 469 L 574 467 L 575 466 L 575 464 L 576 463 L 576 461 L 577 460 L 577 458 L 578 457 L 578 454 L 579 453 L 579 450 L 580 449 L 580 444 L 581 443 L 581 435 L 582 434 L 582 413 L 581 412 L 581 405 L 580 404 L 580 400 L 579 399 L 579 395 L 578 394 L 578 391 L 577 390 L 577 388 L 576 387 L 576 385 L 575 384 L 575 382 L 573 379 L 573 377 L 572 376 L 572 375 L 571 374 L 570 371 L 566 366 L 565 363 L 559 356 L 559 355 L 549 345 L 548 345 L 543 340 L 542 340 L 537 336 L 534 335 L 532 333 L 531 333 L 530 332 L 529 332 L 528 331 L 527 331 L 526 330 L 525 330 L 520 327 L 518 327 L 517 326 L 516 326 L 515 325 L 513 325 L 510 323 L 507 323 L 504 321 L 505 320 L 506 320 L 507 319 L 510 318 L 512 316 L 515 315 L 517 313 L 520 312 L 522 310 L 523 310 L 527 306 L 528 306 L 541 293 L 541 292 L 544 289 L 544 288 L 547 285 L 547 284 L 549 282 L 549 281 L 550 280 L 550 279 L 551 278 L 551 277 L 552 276 L 552 275 L 555 270 L 555 268 L 557 265 L 557 262 L 558 261 L 558 259 L 559 258 L 559 255 L 560 254 L 560 250 L 561 249 L 561 241 L 562 240 L 562 223 L 561 222 L 561 215 L 560 214 L 560 210 L 559 209 L 559 205 L 558 204 L 558 202 L 557 201 L 557 198 L 556 197 L 556 195 L 555 194 L 555 193 L 554 192 L 554 191 L 553 190 L 553 189 L 552 188 L 552 187 L 551 186 L 551 185 L 550 184 L 550 183 L 549 182 L 548 179 L 546 177 L 545 174 L 542 171 L 542 170 L 538 166 L 538 165 L 528 155 L 527 155 L 518 147 L 517 147 L 512 143 L 509 142 L 507 140 L 504 139 L 502 137 L 501 137 L 500 136 L 499 136 L 494 133 L 492 133 L 489 131 L 487 131 L 482 128 L 480 128 L 479 127 L 477 127 L 476 126 L 474 126 L 473 125 L 471 125 L 470 124 L 467 124 L 466 123 L 464 123 L 463 122 L 459 122 L 458 121 L 454 121 L 453 120 L 448 120 L 447 119 L 442 119 L 441 118 L 434 118 L 433 117 L 416 117 L 415 116 Z" fill="currentColor"/>
+      </defs>
+    </svg>
+  </main>
+
+  <script type="module" src="/consultation/consultation.js"></script>
+</body>
+</html>

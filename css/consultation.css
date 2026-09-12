@@ -1,0 +1,378 @@
+/* BOLD Consultation — multi-step experience.
+   Extends styles.css (same tokens, fonts, panel/field patterns) rather
+   than redefining them, so this page stays visually identical to the
+   rest of boldbma.com. Preview build — not linked from the live nav
+   and not yet wired to a submission backend (see consultation.js). */
+
+/* Author rules below set `display` on several elements that also use the
+   native [hidden] attribute (the submit button, the success panel) — an
+   explicit display value always beats the browser's default [hidden]
+   rule, so this makes [hidden] win back, exactly as it should. */
+[hidden] {
+  display: none !important;
+}
+
+.consult-nav__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.85;
+}
+
+.consult-main {
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(6.5rem, 12vh, 8rem) clamp(1.25rem, 6vw, 3rem) clamp(3rem, 8vh, 5rem);
+}
+
+.consult-panel-wrap {
+  width: 100%;
+  padding: 0 var(--panel-inset);
+  margin: 0 auto;
+}
+
+.consult-panel {
+  grid-template-columns: 1fr;
+}
+
+/* This page has no scroll-reveal script (unlike the homepage's main.js) —
+   the panel should simply always be visible, not fade in on scroll. */
+.js .consult-panel,
+.js .consult-panel.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (min-width: 900px) {
+  .consult-panel {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+
+.consult-col {
+  padding: clamp(2rem, 5vw, 3.75rem) clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.consult-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.consult-logo {
+  width: clamp(110px, 14vw, 150px);
+  height: auto;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.consult-intro__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0;
+}
+
+.consult-intro__title em {
+  font-style: italic;
+  font-weight: 700;
+}
+
+.consult-intro__copy {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.consult-intro__meta {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ink-faint);
+}
+
+.consult-form-col {
+  border-top: 1px solid var(--ink-faint);
+}
+
+@media (min-width: 900px) {
+  .consult-form-col {
+    border-top: none;
+    border-left: 1px solid var(--ink-faint);
+  }
+}
+
+/* ---------- Progress ---------- */
+.progress {
+  margin-bottom: 2rem;
+}
+
+.progress__track {
+  height: 2px;
+  background: var(--ink-faint);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  width: 7.6923%; /* 1/13 */
+  background: var(--btn-black);
+  transition: width 0.4s var(--ease);
+}
+
+.progress__label {
+  margin-top: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/* ---------- Steps ---------- */
+.step {
+  display: none;
+  flex-direction: column;
+  gap: 1.35rem;
+  animation: step-in 0.35s var(--ease);
+}
+
+.step.is-active {
+  display: flex;
+}
+
+@keyframes step-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.step__question {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.step__hint {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--taupe);
+  margin: -0.75rem 0 0;
+}
+
+/* ---------- Choice cards (replaces native <select> for a premium,
+   tappable multi-step interaction; text/email/textarea fields below
+   reuse styles.css's existing .field pattern unchanged) ---------- */
+.choice-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.choice-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.choice-card input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.choice-card__face {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.15rem;
+  border: 1px solid var(--ink-faint);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.25);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--ink);
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.choice-card__dot {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--taupe);
+  position: relative;
+}
+
+.choice-card__dot::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--btn-black);
+  transform: scale(0);
+  transition: transform 0.15s var(--ease);
+}
+
+.choice-card:hover .choice-card__face {
+  border-color: rgba(34, 27, 21, 0.35);
+}
+
+.choice-card input:checked + .choice-card__face {
+  border-color: var(--ink);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.choice-card input:checked + .choice-card__face .choice-card__dot::after {
+  transform: scale(1);
+}
+
+.choice-card input:focus-visible + .choice-card__face {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Conditional follow-up shown inline under a choice question */
+.conditional-field {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s var(--ease), opacity 0.25s var(--ease), margin 0.3s var(--ease);
+}
+
+.conditional-field.is-visible {
+  max-height: 12rem;
+  opacity: 1;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Step navigation ---------- */
+.step-nav {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.step-btn {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 0.95rem 1.3rem;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+
+.step-btn--back {
+  background: transparent;
+  border: 1px solid var(--ink-faint);
+  color: var(--ink-soft);
+}
+
+.step-btn--back:hover {
+  border-color: var(--ink);
+}
+
+.step-btn--back[disabled] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.step-btn--next {
+  flex: 1;
+  background: var(--btn-black);
+  color: var(--white);
+  border: none;
+}
+
+.step-btn--next:hover {
+  background: var(--btn-black-hover);
+}
+
+.step-btn--submit {
+  flex: 1;
+}
+
+/* ---------- Success state ---------- */
+.consult-success {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.consult-success p {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.consult-success__title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--ink);
+  margin: 0;
+}
+
+.consult-success__sign {
+  margin-top: 1rem !important;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ink-faint);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.consult-success__sign span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: var(--taupe);
+  text-transform: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 559px) {
+  .consult-main {
+    align-items: flex-start;
+  }
+  .consult-panel-wrap {
+    padding: 0 1rem;
+  }
+  .consult-intro {
+    padding-bottom: 0.5rem;
+  }
+  .step-nav {
+    flex-direction: column-reverse;
+  }
+  .step-btn--back {
+    text-align: center;
+  }
+}
