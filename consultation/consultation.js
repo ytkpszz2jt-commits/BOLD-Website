@@ -132,6 +132,37 @@ const progressFill = document.getElementById("progress-fill");
 const progressLabel = document.getElementById("progress-label");
 const successEl = document.getElementById("consult-success");
 const submissionIdInput = document.getElementById("submission-id");
+const introEl = document.getElementById("consult-intro");
+
+// Fallback UUID generator for browsers/contexts where crypto.randomUUID
+// is unavailable (older Safari, or a restricted embedding context) —
+// only used for the client-side duplicate-submission guard, never for
+// anything security-sensitive.
+function makeId() {
+  try {
+    return crypto.randomUUID();
+  } catch (e) {
+    return "id-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+  }
+}
+
+// sessionStorage can throw in some restricted embedding contexts (private
+// browsing edge cases, cross-origin iframes) — treat any failure as
+// "no stored state" rather than letting it break the rest of the page.
+function safeSessionGet(key) {
+  try {
+    return sessionStorage.getItem(key);
+  } catch (e) {
+    return null;
+  }
+}
+function safeSessionSet(key, value) {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch (e) {
+    /* ignore — duplicate-guard degrades gracefully without it */
+  }
+}
 
 let current = 0;
 
@@ -226,6 +257,10 @@ STEPS.forEach((step) => {
   });
 });
 
+function pad(n) {
+  return String(n).padStart(2, "0");
+}
+
 function showStep(index) {
   document.querySelectorAll(".step").forEach((el) => el.classList.remove("is-active"));
   const el = stepsEl.children[index];
@@ -238,9 +273,13 @@ function showStep(index) {
 
   const pct = ((index + 1) / STEPS.length) * 100;
   progressFill.style.width = `${pct}%`;
-  progressLabel.textContent = `Step ${index + 1} of ${STEPS.length}`;
+  progressLabel.textContent = `${pad(index + 1)} / ${pad(STEPS.length)}`;
   statusEl.textContent = "";
   statusEl.dataset.state = "";
+
+  // On narrow viewports, give the question room to breathe past step one —
+  // the full introduction has already been read.
+  introEl.classList.toggle("is-compact", index > 0);
 }
 
 function validateStep(index) {
@@ -309,9 +348,9 @@ btnBack.addEventListener("click", () => {
 // a session-scoped guard against re-submitting after a refresh, and the
 // submit button disables itself the instant it's pressed.
 const SESSION_KEY = "bold-consultation-submitted";
-submissionIdInput.value = crypto.randomUUID();
+submissionIdInput.value = makeId();
 
-if (sessionStorage.getItem(SESSION_KEY)) {
+if (safeSessionGet(SESSION_KEY)) {
   form.hidden = true;
   successEl.hidden = false;
 }
@@ -328,7 +367,7 @@ form.addEventListener("submit", async (e) => {
     // TODO (post-approval): POST `data` to the real capture endpoint here.
   }
 
-  sessionStorage.setItem(SESSION_KEY, "1");
+  safeSessionSet(SESSION_KEY, "1");
   form.hidden = true;
   successEl.hidden = false;
 });

@@ -12,16 +12,6 @@
   display: none !important;
 }
 
-.consult-nav__eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--white);
-  opacity: 0.85;
-}
-
 .consult-main {
   position: relative;
   z-index: 5;
@@ -31,9 +21,13 @@
   padding: clamp(6.5rem, 12vh, 8rem) clamp(1.25rem, 6vw, 3rem) clamp(3rem, 8vh, 5rem);
 }
 
+/* A larger, more expansive panel than the homepage's — this experience
+   should feel like its own private room, not a form squeezed into the
+   site's usual content width. */
 .consult-panel-wrap {
   width: 100%;
-  padding: 0 var(--panel-inset);
+  max-width: 1400px;
+  padding: 0 clamp(1rem, 4vw, 4rem);
   margin: 0 auto;
 }
 
@@ -66,10 +60,33 @@
 }
 
 .consult-logo {
-  width: clamp(110px, 14vw, 150px);
+  width: clamp(84px, 10vw, 116px);
   height: auto;
   color: var(--ink);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Stacked eyebrow — the "private invitation" opening: brand, positioning,
+   and the nature of this specific experience, in ascending order of
+   specificity. */
+.consult-intro__eyebrows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0 0 0.5rem;
+}
+
+.consult-intro__eyebrows span {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.consult-intro__eyebrows span:last-child {
+  color: var(--ink);
 }
 
 .consult-intro__title {
@@ -103,6 +120,28 @@
   margin-top: auto;
   padding-top: 1.5rem;
   border-top: 1px solid var(--ink-faint);
+  transition: opacity 0.25s var(--ease), max-height 0.3s var(--ease), margin 0.3s var(--ease), padding 0.3s var(--ease);
+}
+
+/* Below 900px the intro and the active question share one column — once
+   the prospect is past the opening step, collapse the long copy so each
+   question keeps its own room rather than everything stacking together. */
+@media (max-width: 899px) {
+  .consult-intro.is-compact .consult-intro__copy,
+  .consult-intro.is-compact .consult-intro__meta {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+  }
+  .consult-intro.is-compact .consult-intro__title {
+    margin-bottom: 0;
+  }
+  .consult-intro.is-compact {
+    padding-bottom: 1.25rem;
+  }
 }
 
 .consult-form-col {
@@ -136,12 +175,12 @@
 }
 
 .progress__label {
-  margin-top: 0.6rem;
+  margin-top: 0.65rem;
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
   color: var(--taupe);
 }
 
@@ -240,7 +279,8 @@
 
 .choice-card input:checked + .choice-card__face {
   border-color: var(--ink);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 0 0 1px var(--ink);
 }
 
 .choice-card input:checked + .choice-card__face .choice-card__dot::after {
@@ -302,7 +342,7 @@
 .step-btn--next {
   flex: 1;
   background: var(--btn-black);
-  color: var(--white);
+  color: var(--ivory);
   border: none;
 }
 
@@ -312,6 +352,7 @@
 
 .step-btn--submit {
   flex: 1;
+  color: var(--ivory);
 }
 
 /* ---------- Success state ---------- */
