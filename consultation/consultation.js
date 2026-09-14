@@ -1,19 +1,20 @@
 /**
  * BOLD Consultation — multi-step form logic.
  *
- * PREVIEW BUILD. Per the founder's explicit instruction, this page is not
- * yet wired to a live submission backend and must not be deployed to
- * production until the visual design is approved. When SUBMIT_ENDPOINT
- * below is set (after approval, alongside the Cloudflare Worker + D1
- * capture path documented in BOLD-AI's forms-questionnaire-intake.md),
- * the submit handler's TODO marks exactly where the real POST goes —
- * no other code needs to change. Until then, submitting shows the
- * approved completion message but does not send data anywhere, the
- * same "nothing invented" pattern used in js/config.js for the
- * existing enquiry form.
+ * Visual design approved by the founder, 2026-09-14. Backend capture is
+ * not yet live: SUBMIT_ENDPOINT is set once the Airtable webhook
+ * automation described in BOLD-AI's
+ * automations/workflows/consultation-intake-sync.md is built and turned
+ * on by the founder (creating the automation itself was outside this
+ * session's tool permissions). Until then, submitting shows an honest
+ * "not yet configured" message rather than a fake success state — the
+ * same "nothing invented" pattern js/config.js already uses for the
+ * existing enquiry form. No other code needs to change once the
+ * endpoint is set.
  */
 
-const SUBMIT_ENDPOINT = ""; // set after design approval + backend build
+const SUBMIT_ENDPOINT = ""; // set once the webhook automation above is live
+const LEAD_SOURCE = "BOLD Outreach Consultation"; // keeps this route distinct from the homepage enquiry form's "BOLD Website Enquiry"
 
 // Exact approved question set — do not reword. Mirrors
 // automations/artifacts/bold-consultation-quick-import.docx in BOLD-AI.
@@ -355,6 +356,35 @@ if (safeSessionGet(SESSION_KEY)) {
   successEl.hidden = false;
 }
 
+/**
+ * Submits the consultation answers to SUBMIT_ENDPOINT. If that's unset,
+ * tells the visitor honestly rather than silently discarding their
+ * answers or falsely claiming success. Mirrors js/config.js's
+ * submitEnquiry() exactly: URL-encoded body + mode "no-cors", since the
+ * Airtable webhook automation this will point at returns no CORS
+ * headers, so a JSON POST would be blocked by the browser before it
+ * ever arrived. The trade-off is an opaque response — success here
+ * means the request was sent, not a confirmed 200.
+ */
+async function submitConsultation(data) {
+  if (!SUBMIT_ENDPOINT) {
+    const err = new Error("not-configured");
+    err.code = "not-configured";
+    throw err;
+  }
+  try {
+    await fetch(SUBMIT_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      body: new URLSearchParams(data),
+    });
+  } catch (error) {
+    const err = new Error("request-failed");
+    err.code = "request-failed";
+    throw err;
+  }
+}
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!validateStep(current)) return;
@@ -362,14 +392,25 @@ form.addEventListener("submit", async (e) => {
   btnSubmit.disabled = true;
 
   const data = Object.fromEntries(new FormData(form).entries());
+  data.leadSource = LEAD_SOURCE;
+  data.submittedAt = new Date().toISOString();
 
-  if (SUBMIT_ENDPOINT) {
-    // TODO (post-approval): POST `data` to the real capture endpoint here.
+  try {
+    await submitConsultation(data);
+    safeSessionSet(SESSION_KEY, "1");
+    form.hidden = true;
+    successEl.hidden = false;
+  } catch (error) {
+    btnSubmit.disabled = false;
+    if (error.code === "not-configured") {
+      statusEl.textContent =
+        "Our consultation intake is being connected. In the meantime, please email hello@boldbma.com directly — nothing above has been lost.";
+    } else {
+      statusEl.textContent =
+        "Something went wrong sending your answers. Please try again shortly, or email hello@boldbma.com directly.";
+    }
+    statusEl.dataset.state = "error";
   }
-
-  safeSessionSet(SESSION_KEY, "1");
-  form.hidden = true;
-  successEl.hidden = false;
 });
 
 showStep(current);
