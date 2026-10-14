@@ -1,15 +1,16 @@
 /**
  * BOLD Consultation — multi-step form logic.
  *
- * Visual design approved by the founder, 2026-09-14. SUBMIT_ENDPOINT
- * below is the founder-built Airtable webhook automation (2026-09-14),
- * per BOLD-AI's automations/workflows/consultation-intake-sync.md.
- * This branch is still preview-only — not merged to main, not deployed
- * to boldbma.com/consultation — pending the founder-run end to end
- * test.
+ * Visual design approved by the founder, 2026-09-14; deployed live
+ * 2026-10-14. SUBMIT_ENDPOINT below points at the "Consultation intake"
+ * Airtable automation (base "BOLD Outreach Consultation" → table
+ * "Submissions"). The endpoint this file previously pointed at
+ * (base appfkUgT1C3mpdRGa) was an empty, unbuilt placeholder automation
+ * in the wrong base that would have silently discarded every real
+ * submission — fixed before the first real end-to-end test.
  */
 
-const SUBMIT_ENDPOINT = "https://hooks.airtable.com/workflows/v1/genericWebhook/appfkUgT1C3mpdRGa/wfl9Egpjqanc9Nr4Q/wtrgmybELLFZxZ5UM";
+const SUBMIT_ENDPOINT = "https://hooks.airtable.com/workflows/v1/genericWebhook/app8otDUgkYRuWsvZ/wflQM8U2DwtUQ1juW/wtro4jF6ytxx7lhr5";
 const LEAD_SOURCE = "BOLD Outreach Consultation"; // keeps this route distinct from the homepage enquiry form's "BOLD Website Enquiry"
 
 // Exact approved question set — do not reword. Mirrors
